@@ -37,10 +37,25 @@ Table of Contents
    5.2 More advanced Neural Nets
 6. AI and Reinforcement Learning 
   6.1 Potpourri for Neural Networks
-Contributions 
-====
 
-Author: @jpark96 <br />
-Thank you ML@B members: @blchu, @raulpuric, and @philkuz!
+# Docker Quickstart
+
+This is a quickstart guide to get you up and running. There is a more comprehensive guide for
+jupyter notebooks [here](https://github.com/kaggledecal/sp17/blob/master/DockerCheatsheet.md).
+
+## Starting a jupyter container
+**Start a jupyter notebook container without mounting a directory**
+
+`docker run -d -p 8888:8888 jupyter/scipy-notebook`
+
+**Start a jupyter container with your current directory mounted**
+
+`docker run -d -p 8888:8888 -v "$(pwd)":/home/jovyan/work jupyter/scipy-notebook`
+
+*Notes*
+* Do not change `/home/jovyan/work`. This is a setting for the container
+
 
 Most of the material was taken from Berkeley's CS189 course. Many thanks to Professor Jonathan Shewchuck, who taught the course during the Spring 2016! Here's the reference to his notes (I VERY MUCH suggest this for a stronger mathematical understanding behind the algorithms): https://people.eecs.berkeley.edu/~jrs/papers/machlearn.pdf
+
+
