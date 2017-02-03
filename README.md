@@ -2,7 +2,7 @@
 
 This is where all Machine Learning at Berkeley's Bootcamp material is housed. Feel free to use for pedagogical purposes!
 
-Slides are available in "presentation/" folder.
+Slides are available on this google drive https://drive.google.com/drive/folders/0B_WdXIV-ueK1eTh6Z19NQ01MUjg
 
 Table of Contents 
 ====
