@@ -58,4 +58,12 @@ jupyter notebooks [here](https://github.com/kaggledecal/sp17/blob/master/DockerC
 
 Most of the material was taken from Berkeley's CS189 course. Many thanks to Professor Jonathan Shewchuck, who taught the course during the Spring 2016! Here's the reference to his notes (I VERY MUCH suggest this for a stronger mathematical understanding behind the algorithms): https://people.eecs.berkeley.edu/~jrs/papers/machlearn.pdf
 
+## Setting up your environment
+If you have not yet installed jupyter on your machine, you'll probably get an error message when you run the above command. 
+### Mac OS 10.10+, Linux, and Windows 10
+Use [Docker](https://docs.docker.com/engine/installation/).
+### Windows < 10 and Mac OS < 10.10
+[Anaconda](https://www.continuum.io/downloads).
+### What should I use?
+Choosing either package is to your discretion; we encourage Docker because it will allow you to quickly prototype papers like [Style Transfer](https://hub.docker.com/r/kchentw/neural-style/), ([paper](http://arxiv.org/abs/1508.06576)).
 
