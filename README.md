@@ -56,7 +56,7 @@ jupyter notebooks [here](https://github.com/kaggledecal/sp17/blob/master/DockerC
 * Do not change `/home/jovyan/work`. This is a setting for the container
 
 
-Most of the material was taken from Berkeley's CS189 course. Many thanks to Professor Jonathan Shewchuck, who taught the course during the Spring 2016! Here's the reference to his notes (I VERY MUCH suggest this for a stronger mathematical understanding behind the algorithms): https://people.eecs.berkeley.edu/~jrs/papers/machlearn.pdf
+Most of the material was taken from Berkeley's CS189 course and adapted from [last year's bootcamp](https://github.com/jpark96/ml-b-bootcamp-public). Many thanks to Professor Jonathan Shewchuck, who taught the course during the Spring 2016! Here's the reference to his notes (I VERY MUCH suggest this for a stronger mathematical understanding behind the algorithms): https://people.eecs.berkeley.edu/~jrs/papers/machlearn.pdf
 
 ## Setting up your environment
 If you have not yet installed jupyter on your machine, you'll probably get an error message when you run the above command. 
