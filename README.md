@@ -7,14 +7,17 @@ Slides are available on this google drive https://drive.google.com/drive/folders
 Table of Contents 
 ====
 1. Perceptron  
+  
   1.1. Binary Classification Problem  
   1.2. Risk Function  
   1.3. Gradient Descent  
   1.4. Perceptron Algorithm
 2. SVM  
+  
   2.1. Hard Margin SVM  
   2.2. Soft Margin SVM  
 3. Decision Trees + Neural Networks  
+  
   3.1. Overview
   3.2  Information Gain / Entropy
   3.3 Decision Tree Algorithm
@@ -26,6 +29,7 @@ Table of Contents
   3.7 Backpropagation
   3.8 Neural Nets Algorithm
 4. Data Science and Unsupervised Models 
+
   4.1. K-means clustering  
   4.2 Hierarchical Clustering  
   4.3. Spectral Clustering  
@@ -33,6 +37,7 @@ Table of Contents
   4.5. Dimensionality Reduction: SVD
   4.6 Data Visualization
 5. Deep Learning
+   
    5.1 Tensorflow and Keras
    5.2 More advanced Neural Nets
 6. AI and Reinforcement Learning 
