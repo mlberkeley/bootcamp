@@ -27,19 +27,31 @@ Table of Contents
   3.4. Random Forrests
   
   3.5. Biological Motivation for Neural Nets  
+  
   3.6.Intro to Neural Nets
+  
   3.7. Activation Functions
+  
   3.8. Feed Forward
+  
   3.9. Backpropagation
+  
   3.10. Neural Nets Algorithm
+  
 4. Data Science and Unsupervised Models 
 
   4.1. K-means clustering  
+  
   4.2. Hierarchical Clustering  
+  
   4.3. Spectral Clustering  
+  
   4.4. Dimensionality Reduction: PCA  
+  
   4.5. Dimensionality Reduction: SVD
+  
   4.6. Data Visualization
+  
 5. Deep Learning
    
    5.1. Tensorflow and Keras
