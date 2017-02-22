@@ -18,10 +18,14 @@ Table of Contents
   2.2. Soft Margin SVM  
 3. Decision Trees + Neural Networks  
   
-  3.1. Overview
+  3.1. Overview 
+  
   3.2.  Information Gain / Entropy
+  
   3.3. Decision Tree Algorithm
+  
   3.4. Random Forrests
+  
   3.5. Biological Motivation for Neural Nets  
   3.6.Intro to Neural Nets
   3.7. Activation Functions
