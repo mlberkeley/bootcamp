@@ -19,29 +19,29 @@ Table of Contents
 3. Decision Trees + Neural Networks  
   
   3.1. Overview
-  3.2  Information Gain / Entropy
-  3.3 Decision Tree Algorithm
-  3.2 Random Forrests
-  3.3 Biological Motivation for Neural Nets  
-  3.4.Intro to Neural Nets
-  3.5 Activation Functions
-  3.6 Feed Forward
-  3.7 Backpropagation
-  3.8 Neural Nets Algorithm
+  3.2.  Information Gain / Entropy
+  3.3. Decision Tree Algorithm
+  3.4. Random Forrests
+  3.5. Biological Motivation for Neural Nets  
+  3.6.Intro to Neural Nets
+  3.7. Activation Functions
+  3.8. Feed Forward
+  3.9. Backpropagation
+  3.10. Neural Nets Algorithm
 4. Data Science and Unsupervised Models 
 
   4.1. K-means clustering  
-  4.2 Hierarchical Clustering  
+  4.2. Hierarchical Clustering  
   4.3. Spectral Clustering  
   4.4. Dimensionality Reduction: PCA  
   4.5. Dimensionality Reduction: SVD
-  4.6 Data Visualization
+  4.6. Data Visualization
 5. Deep Learning
    
-   5.1 Tensorflow and Keras
-   5.2 More advanced Neural Nets
+   5.1. Tensorflow and Keras
+   5.2. More advanced Neural Nets
 6. AI and Reinforcement Learning 
-  6.1 Potpourri for Neural Networks
+  6.1. Potpourri for Neural Networks
 
 # Docker Quickstart
 
