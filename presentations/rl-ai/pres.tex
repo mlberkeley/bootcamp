@@ -6,11 +6,14 @@
 
 \documentclass{beamer}
 
+\usefonttheme{professionalfonts}
+\usefonttheme[onlymath]{serif}
+
 \mode<presentation> {
 
 \usetheme{Berkeley}
-%\usetheme{Berlin}
-
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
 
 \setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
 }
@@ -40,6 +43,8 @@
 
 % math
 \usepackage{amsthm}
+
+ \usepackage{relsize}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathabx}
@@ -92,6 +97,10 @@
 \def\defeq{\stackrel{\text{def}}{=}}
 
 
+\newcommand{\argmin}{\mathop{\mathrm{argmin}}} 
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}} 
+
+
 \def\scriptf{{\mathcal F}}
 \def\scriptq{{\mathcal Q}}
 \def\scriptg{{\mathcal G}}
@@ -124,6 +133,23 @@
 \def\frakG{{\mathfrak G}}
 \def\frakB{{\mathfrak B}}
 \def\frakC{{\mathfrak C}}
+\def\ugearrow{{
+  \mathlarger{
+    \mathlarger{
+      \mathlarger{
+        \mathlarger{
+          \mathlarger{
+            \mathlarger{
+              \mathlarger{
+              \mathlarger{\implies}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}}
 
 
 
@@ -131,18 +157,23 @@
 %   TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[ML@B Bootcamp]{Introduction to Reinforcement Learning and AI}
+\title[Reinforcement Learning]{Bootcamp 6: Reinforcement Learning}
 
-\author[James Bartlett \& Will Guss]{Will Guss \\ James Bartlett}
-\date{} % Date, can be changed to a custom date
+\author[Guss \& Bartlett]{\includegraphics[height=2cm,width=2cm]{BlueGold_fill_small.png}\\   William H. Guss, James Bartlett\\\{wguss, james\}@ml.berkeley.edu\\Machine Learning at Berkeley}
+\date{April 22, 2016} % Date, can be changed to a custom date
 \makeatletter
 \newcommand{\verbatimfont}[1]{\renewcommand{\verbatim@font}{\ttfamily#1}}
 \makeatother
-\begin{document}
 
-\begin{frame}
+\usefonttheme{professionalfonts}
+
+\begin{document}
+  
+
+\begin{frame}{}
 \titlepage
 \end{frame}
+
 
 \addtobeamertemplate{frametitle}{}{%
 \begin{tikzpicture}[remember picture,overlay]
@@ -150,11 +181,6 @@
 \end{tikzpicture}}
 
 \begin{frame}
-
-\begin{center}
-\Huge Agenda 
-\end{center}
-
 
 \frametitle{Overview}
 \tableofcontents
@@ -164,69 +190,120 @@
 %----------------------------------------------------------------------------------------
 %   PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
-\section{Background}
-\begin{frame}
-  \frametitle{Markov Decision Process (MDP)}
-    Environment, $E = (\mathcal{S}, \mathcal{A}, \mathcal{R}, \rho, r)$. 
-    \begin{enumerate}
-    \item State space, $\mathcal{S} = \mathbb{R}^n$
-    \item Action space, $\mathcal{A} = \mathbb{R}^m$
-    \item Reward space, $\mathcal{R} = \mathbb{R}$   
-    \item Transition function, $\rho(s'\ |\ s,a)$. Given a previous state $s$ and action $a$, environment gives $s'$.
-    \item Reward function $r(s,a) \in \mathcal{R}$.
-    \end{enumerate}
-\end{frame} 
-\begin{frame}[fragile]
-  \frametitle{Reinforcement Learning Agent}
-    Deterministic agent $\pi: \mathcal{S} \to \mathcal{A}$ acts in $E$. 
-    \begin{equation*}
-      \begin{tikzcd}
-          s_1 \arrow{r}{\pi} & a_1 \arrow{r}{\rho, r} & s_2, r_2 \arrow{r}{\pi}& a_2  \arrow{r}{\rho, r} & \cdots
-         \end{tikzcd}   
-    \end{equation*}
-    Eg. Pacman sees the screen, and decides to move $\uparrow, \downarrow, \rightarrow, \leftarrow$ and then gets a reward for eating food.
-\end{frame}
-\begin{frame}
-\frametitle{Reinforcement Learning Agent}
-  \begin{center}
-    \includegraphics[width=0.5\textwidth]{Pac-man.png}
-  \end{center}
-\end{frame}
+\section{Introduction}
+\include{sections/introduction}
+
+\section{Theory}
+\include{sections/background}
+
+
+\section{Algorithms}
 
 \begin{frame}
-\frametitle{Value in Reinforcement Learning}
-  The value of a given state for an agent $\pi$ is defined as 
-  \begin{equation*}
-    V^\pi(s_t) = \sum_{n={t+1}}^\infty \gamma^n r(s_n, \pi(s_n))
-  \end{equation*} 
+\frametitle{Q-Learning (State-action Value Iteration)}
+  \textbf{The action-value function (simplified).}
   \begin{enumerate}
-    \item $\gamma$ is the discount factor
-    \item $\pi(s_n)$ is the action the agent $\pi$ makes after seeing state $s_n$.
-    \item $r(s_n, \pi(s_n))$ is the reward the agent gets from taking that action.
+    \item  The future expected reward of an agent $\pi$ is
+    \begin{equation*}
+      Q^\pi(s_t, a_t) = \underbrace{r(s_t, a_t)}_{\text{reward for } a_t} + \sum_{n={t+1}}^\infty \gamma^n r(s_n, \pi(s_n))
+    \end{equation*}
+    \item The Bellman equation gives us 
+    \begin{equation*}
+      Q^\pi(s_t, a_t) = r_t + \gamma Q^\pi(s_{t+1}, \pi(s_{t+1}))
+    \end{equation*}`'
+    \item Given some state $s_t$, the \textbf{best} agent, $\pi^*$ is one that take action 
+    \begin{equation*}
+      a_t = \arg \max_a Q(s_t, a).   
+    \end{equation*}
   \end{enumerate}
 \end{frame}
 
 \begin{frame}
-\frametitle{Expected Future Reward}
-  The expected future reward of an agent $\pi$, also known as the Q function, is
-  \begin{equation*}
-    Q^\pi(s_t, a_t) = \underbrace{r(s_t, a_t)}_{\text{reward for } a_t} + V^\pi(s_t)
-  \end{equation*}
+\frametitle{Q-Learning (State-action Value Iteration)}
+\textbf{TODO: DO THESE SLIDES}
+  \textbf{The action-value function (simplified).}
+  \begin{enumerate}
+    \item The $Q$ function for $\pi^*$ is
+    \begin{equation*}
+      Q^*(s_t, a_t) = r_t + \gamma \arg \max_a Q^\pi(s_{t+1}, a).
+    \end{equation*}
+    \item We can \emph{approximate} this with deep learning!
+    \begin{enumerate}
+      \item Make a neural network $\scriptn: \scripts \to \mathbb{R}^n$ which predicts 
+      the future reward of taking each possible action
+      \begin{equation*}
+        \scriptn(s_t) =\begin{pmatrix}
+            Q^*(s_t, a_1) \\
+             Q^*(s_t, a_2)\\
+             \vdots \\
+              Q^*(s_t, a_n)
+        \end{pmatrix}
+      \end{equation*}
+    \end{enumerate}
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}
-\frametitle{Bellman Equation}
-  The Bellman equation says 
-  \begin{equation*}
-    Q^\pi(s_t, a_t) = r_t + \gamma Q^\pi(s_{t+1}, \pi(s_{t+1}))
-  \end{equation*}
-  Given some state $s_t$, the \textbf{best} agent, $\pi^*$ is one that take action 
-  \begin{equation*}
-    a_t = \arg \max_a Q(s_t, a).   
-  \end{equation*}
+\frametitle{Q-Learning (State-action Value Iteration)}
+  \textbf{Deep Q-Learning}
+\begin{center}
+  \begin{tikzpicture}
+\node[rectangle] at (0,0) {$s_t$};
+\node[rectangle] at (1.5,0) [draw,thick,minimum width=1cm,minimum height=2cm] (B) {$\scriptn$};
+\node[rectangle] at (4.4, 2)  [draw, fill=red!30] (C1) {$Q^*(s_t,a_1) = -12$};
+\node[rectangle] at (4.4, 1)  [draw, fill=red!30] (C2) {$Q^*(s_t,a_2) = 0.17$};
+\node[rectangle] at (4.4, 0)  [draw, fill=green!30] (C3) {$Q^*(s_t,a_3) = 0.22$};
+\node[rectangle] at (4.4, -1) [draw, fill=red!30]  (C4) {$Q^*(s_t,a_4) = 0.03$};
+\node[rectangle] at (4.4, -2) [draw, fill=red!30]  (C5) {$Q^*(s_t,a_5) = -3.2$};
+\node[rectangle] at (8.2, 0) (D) {$ \pi(s_t) =  \arg \max_a \scriptn(s_t)$};
+\draw[->] (0,0) edge (B);
+\draw[->] (B) edge (C1.west);
+\draw[->] (B) edge (C2.west);
+\draw[->] (B) edge (C3.west);
+\draw[->] (B) edge (C4.west);
+\draw[->] (B) edge (C5.west);
+\end{tikzpicture} 
+\end{center}
 \end{frame}
 
-\section{Algorithms}
+
+\begin{frame}
+  \frametitle{Policy Iteration}
+  \textbf{Deep Determisitic Policy Gradient}
+  \begin{enumerate}
+    \item Actor neural network $\mu: \scripts \to \scripta$
+    \item Critic network $Q^\mu: \scripts \times \scripta \to \mathbb{R}$
+    \item Performance of $\mu$ is $Q^\mu(s_t, \mu(s_t))$. \textbf{Maximize performance!} $\nabla_W Q^{\mu}(s_t, a_t) = \nabla_a Q^\mu(s_t,a) \cdot \nabla_W \mu(s_t)$
+  \end{enumerate}
+\begin{center}
+  \begin{tikzpicture}
+\node[rectangle] at (0,0)  {$s_t$};
+\node[rectangle] at (1.75,0) [draw,thick,minimum width=0.2cm,minimum height=1.8cm, fill=black] (BC1) {};
+\node[rectangle] at (2.25,0) [draw,thick,minimum width=0.2cm,minimum height=1.8cm, fill=black] (BC2) {};
+\node[rectangle] at (1.5,0) [draw,thick,minimum width=0.3cm,minimum height=2cm] (B1) {};
+\node[rectangle] at (2,0) [draw,thick,minimum width=0.3cm,minimum height=2cm] (B2) {};
+\node[rectangle] at (2.5,0) [draw,thick,minimum width=0.3cm,minimum height=2cm] (B3) {};
+\node[rectangle] at (3.5,0) (action) {$a_t$};
+\draw[->] (B3.east) edge (action.west);
+\node[rectangle] at  (B2.north) {$\mu$};
+\draw[->] (0,0) edge (B1);
+
+\node[rectangle] at (2.7+ 1.75,-1.5) [draw,thick,minimum width=0.2cm,minimum height=1.8cm, fill=black] (QC1) {};
+\node[rectangle] at (2.7+ 2.25,-1.5) [draw,thick,minimum width=0.2cm,minimum height=1.8cm, fill=black] (QC2) {};
+\node[rectangle] at (2.7+ 1.5,-1.5) [draw,thick,minimum width=0.3cm,minimum height=2cm] (Q1) {};
+\node[rectangle] at (2.7+ 2,-1.5) [draw,thick,minimum width=0.3cm,minimum height=2cm] (Q2) {};
+\node[rectangle] at (2.7+ 2.5,-1.5) [draw,thick,minimum width=0.3cm,minimum height=2cm] (Q3) {};
+\node[rectangle] at (Q2.north) {$Q^\mu$};
+\draw[->, bend right] (0,0) edge (Q1.west);
+\draw[->, bend right] (action) edge (Q1.west);
+\node[rectangle] at (2.7+ 4,-1.5) (critic) {$Q^{\mu}(s_t, a_t)$};
+\draw[->] (Q3.east) edge (critic.west);
+\end{tikzpicture} 
+\end{center}
+\end{frame}
+
+
+
 \section{Questions}
 \begin{frame}
 \Huge{\centerline{Questions?}}
