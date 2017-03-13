@@ -4,7 +4,7 @@
 %   PACKAGES AND THEMES
 %----------------------------------------------------------------------------------------
 
-\documentclass[table]{beamer}
+\documentclass{beamer}
 
 \usefonttheme{professionalfonts}
 \usefonttheme[onlymath]{serif}
@@ -48,7 +48,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathabx}
-\usepackage{xcolor}
 
 \numberwithin{equation}{subsection}
 \numberwithin{theorem}{subsection}
@@ -223,7 +222,76 @@
 
 
 \input{sections/bh}
-\input{sections/qlearn}
+
+
+
+\begin{frame}
+\frametitle{Q-Learning (State-action Value Iteration)}
+  \textbf{The action-value function (simplified).}
+  \begin{enumerate}
+    \item  The future expected reward of an agent $\pi$ is
+    \begin{equation*}
+      Q^\pi(s_t, a_t) = \underbrace{r(s_t, a_t)}_{\text{reward for } a_t} + \sum_{n={t+1}}^\infty \gamma^n r(s_n, \pi(s_n))
+    \end{equation*}
+    \item The Bellman equation gives us 
+    \begin{equation*}
+      Q^\pi(s_t, a_t) = r_t + \gamma Q^\pi(s_{t+1}, \pi(s_{t+1}))
+    \end{equation*}`'
+    \item Given some state $s_t$, the \textbf{best} agent, $\pi^*$ is one that take action 
+    \begin{equation*}
+      a_t = \arg \max_a Q(s_t, a).   
+    \end{equation*}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Q-Learning (State-action Value Iteration)}
+\textbf{TODO: DO THESE SLIDES}
+  \textbf{The action-value function (simplified).}
+  \begin{enumerate}
+    \item The $Q$ function for $\pi^*$ is
+    \begin{equation*}
+      Q^*(s_t, a_t) = r_t + \gamma \arg \max_a Q^\pi(s_{t+1}, a).
+    \end{equation*}
+    \item We can \emph{approximate} this with deep learning!
+    \begin{enumerate}
+      \item Make a neural network $\scriptn: \scripts \to \mathbb{R}^n$ which predicts 
+      the future reward of taking each possible action
+      \begin{equation*}
+        \scriptn(s_t) =\begin{pmatrix}
+            Q^*(s_t, a_1) \\
+             Q^*(s_t, a_2)\\
+             \vdots \\
+              Q^*(s_t, a_n)
+        \end{pmatrix}
+      \end{equation*}
+    \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Q-Learning (State-action Value Iteration)}
+  \textbf{Deep Q-Learning}
+\begin{center}
+  \begin{tikzpicture}
+\node[rectangle] at (0,0) {$s_t$};
+\node[rectangle] at (1.5,0) [draw,thick,minimum width=1cm,minimum height=2cm] (B) {$\scriptn$};
+\node[rectangle] at (4.4, 2)  [draw, fill=red!30] (C1) {$Q^*(s_t,a_1) = -12$};
+\node[rectangle] at (4.4, 1)  [draw, fill=red!30] (C2) {$Q^*(s_t,a_2) = 0.17$};
+\node[rectangle] at (4.4, 0)  [draw, fill=green!30] (C3) {$Q^*(s_t,a_3) = 0.22$};
+\node[rectangle] at (4.4, -1) [draw, fill=red!30]  (C4) {$Q^*(s_t,a_4) = 0.03$};
+\node[rectangle] at (4.4, -2) [draw, fill=red!30]  (C5) {$Q^*(s_t,a_5) = -3.2$};
+\node[rectangle] at (8.2, 0) (D) {$ \pi(s_t) =  \arg \max_a \scriptn(s_t)$};
+\draw[->] (0,0) edge (B);
+\draw[->] (B) edge (C1.west);
+\draw[->] (B) edge (C2.west);
+\draw[->] (B) edge (C3.west);
+\draw[->] (B) edge (C4.west);
+\draw[->] (B) edge (C5.west);
+\end{tikzpicture} 
+\end{center}
+\end{frame}
+
 \include{sections/piter}
 
 \section{Questions}
