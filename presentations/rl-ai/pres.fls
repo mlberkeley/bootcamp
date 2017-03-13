@@ -366,6 +366,8 @@ INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/se
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/introduction.aux
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/background.aux
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/background.aux
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/piter.aux
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/piter.aux
 OUTPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/pres.aux
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -612,6 +614,17 @@ INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/Wh
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
+OUTPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/piter.aux
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/piter.tex
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/piter.tex
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/White_outline_small_name_transparent.png
 OUTPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/pres.nav
@@ -622,6 +635,8 @@ INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/se
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/introduction.aux
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/background.aux
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/background.aux
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/piter.aux
+INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/sections/piter.aux
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/pres.out
 INPUT /media/william/store/workspace/dev/ml/mlab/bootcamp/presentations/rl-ai/pres.out
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb

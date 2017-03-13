@@ -201,8 +201,23 @@
 \begin{frame}
 \frametitle{$\ $}
   \begin{center}
-    \Huge{\textbf{Algorithms}}
+    \Huge{\textbf{Assorted Algorithms}
+    }
   \end{center}
+  We'll go over:
+  \begin{itemize}
+    \item Behavioral Cloning
+    \item Q-Learning
+    \item Policy Iteration
+  \end{itemize}
+  
+  Learn at home:
+  \begin{itemize}
+    \item Value iteration
+    \item Temporal Difference Methods
+    \item Inverse Reinforcement Learning.
+  \end{itemize}
+
 \end{frame}
 
 
@@ -277,43 +292,7 @@
 \end{center}
 \end{frame}
 
-
-\begin{frame}
-  \frametitle{Policy Iteration}
-  \textbf{Deep Determisitic Policy Gradient}
-  \begin{enumerate}
-    \item Actor neural network $\mu: \scripts \to \scripta$
-    \item Critic network $Q^\mu: \scripts \times \scripta \to \mathbb{R}$
-    \item Performance of $\mu$ is $Q^\mu(s_t, \mu(s_t))$. \textbf{Maximize performance!} $\nabla_W Q^{\mu}(s_t, a_t) = \nabla_a Q^\mu(s_t,a) \cdot \nabla_W \mu(s_t)$
-  \end{enumerate}
-\begin{center}
-  \begin{tikzpicture}
-\node[rectangle] at (0,0)  {$s_t$};
-\node[rectangle] at (1.75,0) [draw,thick,minimum width=0.2cm,minimum height=1.8cm, fill=black] (BC1) {};
-\node[rectangle] at (2.25,0) [draw,thick,minimum width=0.2cm,minimum height=1.8cm, fill=black] (BC2) {};
-\node[rectangle] at (1.5,0) [draw,thick,minimum width=0.3cm,minimum height=2cm] (B1) {};
-\node[rectangle] at (2,0) [draw,thick,minimum width=0.3cm,minimum height=2cm] (B2) {};
-\node[rectangle] at (2.5,0) [draw,thick,minimum width=0.3cm,minimum height=2cm] (B3) {};
-\node[rectangle] at (3.5,0) (action) {$a_t$};
-\draw[->] (B3.east) edge (action.west);
-\node[rectangle] at  (B2.north) {$\mu$};
-\draw[->] (0,0) edge (B1);
-
-\node[rectangle] at (2.7+ 1.75,-1.5) [draw,thick,minimum width=0.2cm,minimum height=1.8cm, fill=black] (QC1) {};
-\node[rectangle] at (2.7+ 2.25,-1.5) [draw,thick,minimum width=0.2cm,minimum height=1.8cm, fill=black] (QC2) {};
-\node[rectangle] at (2.7+ 1.5,-1.5) [draw,thick,minimum width=0.3cm,minimum height=2cm] (Q1) {};
-\node[rectangle] at (2.7+ 2,-1.5) [draw,thick,minimum width=0.3cm,minimum height=2cm] (Q2) {};
-\node[rectangle] at (2.7+ 2.5,-1.5) [draw,thick,minimum width=0.3cm,minimum height=2cm] (Q3) {};
-\node[rectangle] at (Q2.north) {$Q^\mu$};
-\draw[->, bend right] (0,0) edge (Q1.west);
-\draw[->, bend right] (action) edge (Q1.west);
-\node[rectangle] at (2.7+ 4,-1.5) (critic) {$Q^{\mu}(s_t, a_t)$};
-\draw[->] (Q3.east) edge (critic.west);
-\end{tikzpicture} 
-\end{center}
-\end{frame}
-
-
+\include{sections/piter}
 
 \section{Questions}
 \begin{frame}
