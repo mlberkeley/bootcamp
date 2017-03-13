@@ -1,5 +1,6 @@
 import gym
 import numpy as np
+import time
 env = gym.make('FrozenLake-v0')
 # grids
 Q = np.zeros((env.observation_space.n, env.action_space.n))
@@ -8,7 +9,7 @@ Q = np.zeros((env.observation_space.n, env.action_space.n))
 lr = 0.85
 y = 0.99
 
-num_steps = 2000
+num_steps = 20000
 
 rList = []
 for ii in range(num_steps):
@@ -28,8 +29,10 @@ for ii in range(num_steps):
         rAll += r
         s = s1
         if d == True:break
+        if ii == num_steps - 1:
+            env.render()
+            time.sleep(1)
     rList.append(rAll)
-    env.render()
 print("Score over time: " +  str(sum(rList)/num_steps))
 print("Final Q-Table Values")
 print(Q)
