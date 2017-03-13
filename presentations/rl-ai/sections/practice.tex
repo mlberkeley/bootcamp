@@ -1,0 +1,72 @@
+%!TEX root = ../pres.tex
+
+\begin{frame}
+	\center\huge{Practical Reinforcement Learning}
+\end{frame}
+
+\begin{frame}
+\frametitle{Process}
+\begin{enumerate}
+	\item Clearly define the environment.
+	\begin{itemize}
+		\item What is state space, $\scripts$? Action space $\scripta?$ Low dimensions is better!
+		\item Use tools like OpenAI Gym to make a simulator.
+	\end{itemize}
+	\item Choose a good reward function.
+	\begin{itemize}
+		\item Don't make sparse reward functions: \\
+		\begin{center}
+			\textbf{+1 for winning vs. guiding agent to win.}
+		\end{center}
+		\item Penalize for time constraints!
+		\item Break the problem in to smaller goals with rewards $r_1, r_2,\dots$. Then
+			$r(s,a) = \sum_i w_i r_i(s,a)$.
+	\end{itemize}
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Process}
+\begin{enumerate}
+
+	\setcounter{enumi}{2}
+	\item Choose a model.
+	\begin{itemize}
+		\item Deep reinforcement learning is king! 
+		\begin{itemize}
+			\item Discrete $\scripta \to DQN, DDQN$
+			\item Continuous $\scripta \to DDPG, NAF, A3C, TRPO.$	
+		\end{itemize}
+		\item Less hyperparameters better.
+		\item Don't rule models out too early.
+	\end{itemize}
+	\item Train the model against the environment.
+	\begin{itemize}
+		\item Choose a good exploration strategy.
+		\item RL can take a long time (days - months), let models train to completion.
+		\item Do a sweep on hyperparameters.
+		\item Overfitting (to optimal policy) is good. 
+		\item \emph{(You will fail here many times, go to step 3.)}
+	\end{itemize}
+	\item Profit
+\end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{$\text{ProTips}^{tm}$}
+\begin{itemize}
+	\item \textbf{Fastest way to learn RL:} Implement landmark papers in tensorflow, Atari DQN, DPG, ...
+	\item \textbf{Write unit tests before you train!}
+	\item \textbf{Use an autodiff framework: } Tensorflow, PyTorch, ...
+	\item \textbf{Avoid pixel data at all costs: } CNNs/CV algorithms make training very slow!
+	\begin{itemize}
+		\item Test RL models on featurized data in simualtion, then move to pixel based models for real data.
+	\end{itemize}
+\end{itemize}
+\begin{center}
+	\textbf{Good luck!}
+\end{center}
+\end{frame}
