@@ -75,6 +75,7 @@
 
 
 
+
 \begin{frame}
 \frametitle{Value under a policy}
   The \textbf{state value} is a function of a given state for an agent $\pi$ defined as 
@@ -87,6 +88,27 @@
     \item $r(s_n, \pi(s_n))$ is the reward the agent gets from taking that action.
   \end{enumerate}
 \end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Value under a policy}
+  The \textbf{state value} is a function of a given state for an agent $\pi$ defined as 
+  \begin{equation*}
+    V^\pi(s_t) = \mathbb{E}\left[\sum_{n={t+1}}^\infty \gamma^n r(s_n, \pi(s_n))\right]
+  \end{equation*} 
+    \begin{equation*}
+      \begin{tikzcd}
+          s_t \arrow{r}{\pi} & a_1 \arrow{r}{\rho, r} & s_2, r_2 \arrow{r}{\pi}& a_2  \arrow{r}{\rho, r} & \cdots
+         \end{tikzcd}    
+    \end{equation*}
+  \begin{equation*}
+        \begin{tikzcd}
+        s_t \arrow{r}{\pi} & a_0 \arrow{r}{\rho, r} & s_7, r_7 \arrow{r}{\pi}& a_3  \arrow{r}{\rho, r} & \cdots
+       \end{tikzcd} 
+  \end{equation*}
+\end{frame}
+
+
 
 \begin{frame}
 \frametitle{Value under a policy}
